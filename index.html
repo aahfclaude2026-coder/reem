@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,129 +8,25 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap');
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
         }
-
-        body {
-            min-height: 100vh;
-            background-color: #0b0f19;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(339,49%,15%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(43,49%,15%,1) 0, transparent 50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
-            padding: 20px;
-        }
-
-        /* نجوم ذهبية متساقطة في الخلفية */
-        .stars-container {
-            position: absolute;
-            top: 0;
-            left: 0;
+        body, html {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
+            background-color: #0b0f19;
         }
-
-        .star {
+        /* زر تفاعلي عائم فوق المشهد الـ 3D */
+        .btn-container {
             position: absolute;
-            background: linear-gradient(135deg, #ffd700, #ffa500);
-            border-radius: 50%;
-            animation: fall linear infinite;
-            opacity: 0.6;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
         }
-
-        @keyframes fall {
-            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* البطاقة الداكنة الفخمة */
-        .premium-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            padding: 50px 35px;
-            width: 100%;
-            max-width: 550px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* الأيقونة العلوية */
-        .icon-wrapper {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 30px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
-        }
-
-        h1 {
-            color: #ffffff;
-            font-size: 2.4rem;
-            font-weight: 900;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        h1 span {
-            background: linear-gradient(45deg, #ff758c, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: #9ca3af;
-            font-size: 1.05rem;
-            font-weight: 400;
-            margin-bottom: 35px;
-        }
-
-        /* صندوق الرسالة الداكن */
-        .message-content {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: right;
-            margin-bottom: 35px;
-        }
-
-        .message-content p {
-            color: #e5e7eb;
-            line-height: 1.9;
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        /* زر تفاعلي فخم بمؤثر نيون */
         .action-btn {
             background: linear-gradient(45deg, #1f2937, #111827);
             color: #ffd700;
@@ -142,84 +38,235 @@
             cursor: pointer;
             transition: all 0.3s ease;
             outline: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-
         .action-btn:hover {
             background: linear-gradient(45deg, #ffd700, #ffa500);
             color: #0b0f19;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
             transform: translateY(-2px);
             border-color: transparent;
         }
-
-        .action-btn:active {
-            transform: translateY(0);
-        }
-
         /* تأثير الجزيئات المتطايرة عند الضغط */
         .sparkle-pop {
             position: absolute;
-            font-size: 20px;
+            font-size: 24px;
             animation: floatOut 1.2s ease-out forwards;
             pointer-events: none;
-            z-index: 100;
+            z-index: 200;
         }
-
         @keyframes floatOut {
             0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-120px) translateX(var(--x)) scale(1.3); opacity: 0; }
+            100% { transform: translateY(-150px) translateX(var(--x)) scale(1.4); opacity: 0; }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
 
-    <div class="stars-container" id="stars"></div>
-
-    <div class="premium-card">
-        <div class="icon-wrapper">
-            👑
-        </div>
-        
-        <h1>شكراً <span>ريم</span></h1>
-        <p class="subtitle">بمناسبة يومكِ الأخير معنا.. ممتنون لكل لحظة</p>
-
-        <div class="message-content">
-            <p>
-                عزيزتنا ريم، لقد كنتِ ركيزة أساسية وطاقة إيجابية لا تعوض في فريقنا. شكراً لعطائكِ المتميز، لابتسامتكِ الدائمة، ولجهودكِ الرائعة التي تركت أثراً واضحاً في كل زاوية. 
-                <br><br>
-                نتمنى لكِ من أعماق قلوبنا رحلة قادمة مليئة بالنجاح والتوفيق والتميز والتألق في محطتكِ الجديدة.
-            </p>
-        </div>
-
+    <div class="btn-container">
         <button class="action-btn" onclick="burstSparks(event)">تمنّي التوفيق لها ✨</button>
     </div>
 
     <script>
-        // توليد النجوم الذهبية في الخلفية
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * -20 + 'px';
-            star.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            star.style.animationDelay = Math.random() * 5 + 's';
-            const size = Math.random() * 5 + 2 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            starsContainer.appendChild(star);
+        // 1. إعداد المشهد، الكاميرا، والمحرك
+        const scene = new THREE.Scene();
+        // إضافة لون الضباب ليعطي عمق فخم للخلفية الداكنة
+        scene.fog = new THREE.FogExp2(0x0b0f19, 0.015);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+
+        // 2. التحكم باللمس والماوس
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxDistance = 12;
+        controls.minDistance = 3;
+
+        // 3. الإضاءة المحيطية والموجهة لتعطي بريقاً للتصميم
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffd700, 1.5);
+        dirLight.position.set(5, 5, 5);
+        scene.add(dirLight);
+
+        // 4. نظام جزيئات النجوم الذهبية المتساقطة (3D Stars)
+        const starsCount = 150;
+        const starsGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(starsCount * 3);
+        const speeds = [];
+
+        for(let i=0; i<starsCount; i++) {
+            // توزيع عشوائي في الفضاء المحيط
+            positions[i*3] = (Math.random() - 0.5) * 25;
+            positions[i*3+1] = Math.random() * 20 - 10; 
+            positions[i*3+2] = (Math.random() - 0.5) * 25;
+            speeds.push(Math.random() * 0.02 + 0.01); // سرعة سقوط كل نجمة
         }
 
-        // تأثير تناثر النجوم الذهبية عند الضغط على الزر
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        // إنشاء شكل النجوم كلون ذهبي متوهج دائرى
+        const starCanvas = document.createElement('canvas');
+        starCanvas.width = 16;
+        starCanvas.height = 16;
+        const starCtx = starCanvas.width / 2;
+        const gradient = starCanvas.getContext('2d').createRadialGradient(8, 8, 0, 8, 8, 8);
+        gradient.addColorStop(0, 'rgba(255,215,0,1)');
+        gradient.addColorStop(1, 'rgba(255,215,0,0)');
+        starCanvas.getContext('2d').fillStyle = gradient;
+        starCanvas.getContext('2d').fillRect(0,0,16,16);
+        
+        const starTexture = new THREE.CanvasTexture(starCanvas);
+        const starsMaterial = new THREE.PointsMaterial({
+            size: 0.25,
+            map: starTexture,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+
+        const starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
+
+        // 5. صناعة لوحة العرض ثلاثية الأبعاد (3D Premium Card) باستخدام Canvas لتوليد نفس نصوصك بدقة عالية
+        function createPremiumCardTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const ctx = canvas.getContext('2d');
+
+            // خلفية البطاقة الداكنة مع انحناءات متوهجة خفيفة
+            ctx.fillStyle = 'rgba(17, 24, 39, 0.95)';
+            ctx.beginPath();
+            ctx.roundRect(64, 64, 896, 896, 60);
+            ctx.fill();
+
+            // إطار ذهبي ناعم يلتف حول البطاقة
+            ctx.strokeStyle = 'rgba(255, 215, 0, 0.25)';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // رسم التاج 👑 العلوى
+            ctx.font = '80px Arial';
+            ctx.fillText('👑', 512, 180);
+
+            // النص الرئيسي: شكراً ريم
+            ctx.font = 'bold 75px "Cairo", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText('شكراً ', 440, 310);
+            
+            // تلوين اسم "ريم" بتدرج متوهج
+            const textGrad = ctx.createLinearGradient(520, 0, 680, 0);
+            textGrad.addColorStop(0, '#ff758c');
+            textGrad.addColorStop(1, '#ffd700');
+            ctx.fillStyle = textGrad;
+            ctx.fillText('ريم', 590, 310);
+
+            // العنوان الفرعي
+            ctx.font = '34px "Cairo", sans-serif';
+            ctx.fillStyle = '#9ca3af';
+            ctx.fillText('بمناسبة يومكِ الأخير معنا.. ممتنون لكل لحظة', 512, 410);
+
+            // صندوق الرسالة الداخلي الداكن
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.beginPath();
+            ctx.roundRect(120, 480, 784, 360, 40);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.stroke();
+
+            // كتابة نصوص الرسالة بالكامل من كودك الأصلي مع ضبط الأسطر والمحاذاة
+            ctx.fillStyle = '#e5e7eb';
+            ctx.font = '32px "Cairo", sans-serif';
+            
+            const line1 = "عزيزتنا ريم، لقد كنتِ ركيزة أساسية وطاقة";
+            const line2 = "إيجابية لا تعوض في فريقنا. شكراً لعطائكِ";
+            const line3 = "المتميز، لابتسامتكِ الدائمة، ولجهودكِ الرائعة";
+            const line4 = "التي تركت أثراً واضحاً في كل زاوية.";
+            const line5 = "نتمنى لكِ من أعماق قلوبنا رحلة قادمة مليئة";
+            const line6 = "بالنجاح والتوفيق والتميز والتألق في محطتكِ الجديدة.";
+
+            ctx.fillText(line1, 512, 540);
+            ctx.fillText(line2, 512, 590);
+            ctx.fillText(line3, 512, 640);
+            ctx.fillText(line4, 512, 690);
+            ctx.fillText(line5, 512, 750);
+            ctx.fillText(line6, 512, 800);
+
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // بناء اللوحة المجسمة في الفضاء ثلاثي الأبعاد
+        const cardGeometry = new THREE.PlaneGeometry(4.2, 4.2);
+        const cardMaterial = new THREE.MeshStandardMaterial({
+            map: createPremiumCardTexture(),
+            transparent: true,
+            side: THREE.DoubleSide,
+            roughness: 0.2,
+            metalness: 0.1
+        });
+        const premiumCard = new THREE.Mesh(cardGeometry, cardMaterial);
+        scene.add(premiumCard);
+
+        // 6. موضع الكاميرا الافتراضي لمشاهدة العمق ثلاثي الأبعاد بشكل ممتاز
+        camera.position.set(0, 0, 5.5);
+        controls.update();
+
+        // 7. حلقة التحريك والتحديث المستمر للمشهد (Animation Loop)
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // حركة تموج عائمة وهادئة للبطاقة ثلاثية الأبعاد
+            const time = Date.now() * 0.001;
+            premiumCard.position.y = Math.sin(time) * 0.08;
+            premiumCard.rotation.y = Math.sin(time * 0.5) * 0.04;
+
+            // تحريك جزيئات النجوم الذهبية للأسفل باستمرار لمحاكاة التساقط
+            const positionsAttribute = starsGeometry.getAttribute('position');
+            for (let i = 0; i < starsCount; i++) {
+                let y = positionsAttribute.getY(i);
+                y -= speeds[i]; // هبوط لأسفل
+                
+                // إعادة النجمة للأعلى إذا خرجت عن نطاق الرؤية السفلي
+                if (y < -10) {
+                    y = 10;
+                }
+                positionsAttribute.setY(i, y);
+            }
+            positionsAttribute.needsUpdate = true;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // 8. دعم مرونة حجم الشاشة عند التدوير أو تغيير المقاس
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // 9. تأثير تناثر النجوم الذهبية وتعبيرات الاحتفال عند الضغط على الزر
         function burstSparks(event) {
-            for(let i=0; i<12; i++) {
+            for(let i=0; i<15; i++) {
                 const spark = document.createElement('div');
                 spark.classList.add('sparkle-pop');
-                spark.innerText = ['✨', '⭐', '💛', '🎉'][Math.floor(Math.random() * 4)];
+                spark.innerText = ['✨', '⭐', '💛', '🎉', '👑'][Math.floor(Math.random() * 5)];
                 
-                // تحديد حركة عشوائية يميناً ويساراً أثناء الصعود
-                const randomX = (Math.random() - 0.5) * 100 + 'px';
+                const randomX = (Math.random() - 0.5) * 120 + 'px';
                 spark.style.setProperty('--x', randomX);
                 
                 spark.style.left = (event.clientX - 10) + 'px';
