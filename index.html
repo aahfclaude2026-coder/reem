@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكراً ريم | بالتوفيق في خطوتك القادمة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* تأثير الخلفية المتساقطة */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            display: block;
+            max-width: 10px;
+            max-height: 10px;
+            background-color: #ff758c;
+            border-radius: 50%;
+            animation: drop 5s ease-in infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes drop {
+            0% { top: -20px; transform: translateX(0) rotate(0deg); }
+            100% { top: 100%; transform: translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* بطاقة التوديع الرئيسية */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            z-index: 10;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* الرمز التعبيري أو الصورة الدائرية */
+        .avatar-container {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 25px;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(255, 117, 140, 0.3);
+            font-size: 50px;
+            animation: heartBeat 2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #ff758c;
+            position: relative;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        /* مساحة الرسالة */
+        .message-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            border-right: 5px solid #ff758c;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .message-box p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        /* أزرار تفاعلية */
+        .wishes-btn {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 117, 140, 0.25);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .wishes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 117, 140, 0.35);
+        }
+
+        .wishes-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* تأثير القلوب عند الضغط على الزر */
+        .heart-pop {
+            position: absolute;
+            font-size: 24px;
+            animation: flyUp 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confetti-container" id="confetti"></div>
+
+    <div class="card">
+        <div class="avatar-container">
+            ✨
+        </div>
+        
+        <h1>شكراً <span>ريم</span>!</h1>
+        <p class="subtitle">بمناسبة يومكِ الأخير معنا.. ممتنون لكل لحظة</p>
+
+        <div class="message-box">
+            <p>
+                عزيزتنا ريم، لقد كنتِ ركيزة أساسية وطاقة إيجابية لا تعوض في فريقنا. شكراً لعطائكِ المتميز، لابتسامتكِ الدائمة، ولجهودكِ الرائعة التي تركت أثراً واضحاً في كل زاوية. 
+                <br><br>
+                نتمنى لكِ من أعماق قلوبنا رحلة قادمة مليئة بالنجاح والتوفيق والتميز والتألق في محطتكِ الجديدة.
+            </p>
+            <span class="signature">✨ عائلتكِ في العمل / زملائكِ ومحبيكِ</span>
+        </div>
+
+        <button class="wishes-btn" onclick="createHeart(event)">اضغط لتمنّي التوفيق لها! ❤️</button>
+    </div>
+
+    <script>
+        // توليد تأثير الخلفية المتساقطة تلقائياً
+        const confettiContainer = document.getElementById('confetti');
+        const colors = ['#ff758c', '#ff7eb3', '#fbc531', '#4cd137', '#00a8ff'];
+        
+        for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + 'px';
+            confettiContainer.appendChild(confetti);
+        }
+
+        // تأثير القلوب المتطايرة عند الضغط على الزر
+        function createHeart(event) {
+            for(let i=0; i<10; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-pop');
+                heart.innerText = ['❤️', '✨', '🌸', '🎉'][Math.floor(Math.random() * 4)];
+                
+                // تحديد موقع الزر وضبط خروج التأثير منه
+                heart.style.left = (event.clientX + (Math.random() - 0.5) * 60) + 'px';
+                heart.style.top = (event.clientY + (Math.random() - 0.5) * 40) + 'px';
+                
+                document.body.appendChild(heart);
+
+                // إزالة العنصر بعد انتهاء الحركة
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
